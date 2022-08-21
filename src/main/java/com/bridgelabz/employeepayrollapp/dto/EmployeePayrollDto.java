@@ -1,11 +1,13 @@
 package com.bridgelabz.employeepayrollapp.dto;
 
 public class EmployeePayrollDto {
-    //VARIABLES
     public String name;
     public  long salary;
 
-    //OVERIDE TOSTRING
+    public EmployeePayrollDto(String name, long salary) {
+        this.name = name;
+        this.salary = salary;
+    }
     @Override
     public String toString() {
         return "EmployeePayrollDTO{" +

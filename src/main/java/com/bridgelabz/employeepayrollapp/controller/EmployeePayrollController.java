@@ -51,5 +51,4 @@ public class EmployeePayrollController {
         ResponseDto responseDTO = new ResponseDto("Deleted Successfully:","Delete Id:"+empId);
         return new ResponseEntity<ResponseDto>(responseDTO,HttpStatus.OK);
     }
-
 }

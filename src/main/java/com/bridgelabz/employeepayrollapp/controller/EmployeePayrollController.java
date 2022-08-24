@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -32,14 +33,14 @@ public class EmployeePayrollController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<ResponseDto> addEmployeePayrollData(@RequestBody EmployeePayrollDto empPayrollDTO){
+    public ResponseEntity<ResponseDto> addEmployeePayrollData(@Valid @RequestBody EmployeePayrollDto empPayrollDTO){
         Employee employee = employeePayrollService.CreateEmployeeDetails(empPayrollDTO);
         ResponseDto responseDTO = new ResponseDto("Created Employee Payroll Data Successfully:", employee);
         return new ResponseEntity<ResponseDto>(responseDTO, HttpStatus.OK);
     }
 
     @PutMapping("/update/{empId}")
-    public ResponseEntity<ResponseDto> updateEmployeePayrollData(@PathVariable("empId") int empId, @RequestBody EmployeePayrollDto empPayrollDTO){
+    public ResponseEntity<ResponseDto> updateEmployeePayrollData(@Valid @PathVariable("empId") int empId, @RequestBody EmployeePayrollDto empPayrollDTO){
         Employee employee = employeePayrollService.updateEmployeeDetails(empId, empPayrollDTO);
         ResponseDto responseDTO = new ResponseDto("Updated Employee Payroll Data Successfully:", employee);
         return new ResponseEntity<ResponseDto>(responseDTO, HttpStatus.OK);
@@ -50,5 +51,6 @@ public class EmployeePayrollController {
         employeePayrollService.deleteEmployeeDetails(empId);
         ResponseDto responseDTO = new ResponseDto("Deleted Successfully:","Delete Id:"+empId);
         return new ResponseEntity<ResponseDto>(responseDTO,HttpStatus.OK);
+
     }
 }

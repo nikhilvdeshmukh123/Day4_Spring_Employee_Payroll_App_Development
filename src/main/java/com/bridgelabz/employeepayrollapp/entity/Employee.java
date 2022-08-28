@@ -12,7 +12,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(int empId, EmployeePayrollDto empPayrollDTO) {
+     public Employee(int empId, EmployeePayrollDto empPayrollDTO) {
         this.employeeId = empId;
         this.name = empPayrollDTO.name;
         this.salary = empPayrollDTO.salary;
